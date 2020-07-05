@@ -1,2 +1,2 @@
 # The Mars Rover Project
-please delete the src and other folder. Also delete the new-brach
+Added the grid and mouse down effect on the index.html page
