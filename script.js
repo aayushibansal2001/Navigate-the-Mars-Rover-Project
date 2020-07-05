@@ -12,13 +12,13 @@ function createGrid(x,y) {
 
 // function that clears the grid
 function clearGrid(){
-    $(".grid").remove();
+    $(".grid").empty();
 };  
 
 
 function refreshGrid(){
     clearGrid();
-    createGrid(15,25);
+    /*createGrid(15,25);*/
 };
 
 var createWalls = false;
@@ -32,15 +32,28 @@ $(document).ready(function() {
     $(".grid").mousedown(function() {   
         $(this).css("background-color", "black");
         createWalls=true;  //It will create the walls.
+
+        $(".grid").mouseenter(function() {   
+            if(createWalls==false)
+            return;
+            
+            $(this).css("background-color", "black");
+            createWalls=true;
+            
+            
+        });
     });
+    
     
     $(".grid").mouseup(function(){
         createWalls = false;  //stop creating the wall
     });
 
     // allows the click of a button to prompt the user to create a new grid
-    $(".newGrid").click(function() {
-        refreshGrid();
+    $("#clearBtn").click(function() {
+        location.reload(true);
+
+        /*refreshGrid();*/
     });
 
     
