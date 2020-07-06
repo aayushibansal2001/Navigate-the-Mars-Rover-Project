@@ -1,19 +1,27 @@
-#container {
-	position: relative;
-	top: 100px;
-	outline:2px solid #000;
-	font-size: 0;
-	margin:auto;
-	height:460px;
-	width:960px;
-	padding: 0;
-	border: none;
+#container { /* to align the grid cells */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 auto;
+    }
+
+.grid { /* the cells */
+    width: 48px;
+    height: 48px;
+    align-content: center;
+    text-align: center;
+    transition: 0; 
+    background-color: ;
+    border: 3px solid black;
 }
 
-.grid {
-	margin:0;
-	padding:0;
-	border:none;
-	outline:1px solid #000;
-	display:inline-block;
+
+#wrapper { /*outline*/
+    padding: 3px 5px 3px 5px;
+    border: 3px solid black;
+    border-radius: 1px;
+    margin: 180px auto;
+    width: 700px;
 }
+
