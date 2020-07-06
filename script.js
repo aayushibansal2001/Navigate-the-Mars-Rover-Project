@@ -49,3 +49,14 @@ function newGrid() {
   location.reload(true); //to reload the page
  
 }
+
+//To get 1D index from row and column number
+function mapping1D(row, column, totalColumn){
+  return (cow * totalColumn) + column;
+}
+
+//To get row and coulmn from index in 1D array
+function mapping2D(index, totalColumn){
+  var position = [index / totalColumn, index % totalColumn];
+  return position
+}
