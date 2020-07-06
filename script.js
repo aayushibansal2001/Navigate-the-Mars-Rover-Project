@@ -1,68 +1,51 @@
-// function that builds a grid in the "container"
-function createGrid(x,y) {
-    for (var rows = 0; rows < x; rows++) {
-        for (var columns = 0; columns < y; columns++) {
-            $("#container").append("<div class='grid'></div>");
-        };
-    };
-    $(".grid").width(960/y);
-    $(".grid").height(460/x);
-};
+let container = document.getElementById('container'); //to extract the container id from html
+let j = 84; //total number of cells
 
+function gridOperations() {
+    let i = 0;
+  
+    function addCell(){
+        let newCell = document.createElement('cell'); //declare a new cell
+        newCell.setAttribute('class', 'grid'); // new class
+        container.appendChild(newCell); // add to the container
+    }
+  
+    //create j cells
+    for (i = 0; i < j; i++) {
+    addCell();
+    }
+  
+    //Create variable for grid class
+    let grid = document.getElementsByClassName('grid');
 
-// function that clears the grid
-function clearGrid(){
-    $(".grid").empty();
-};  
-
-
-function refreshGrid(){
-    clearGrid();
-    /*createGrid(15,25);*/
-};
-
-var createWalls = false;
-
-$(document).ready(function() {
-
-    // create a 15x25 grid when the page loads
-    createGrid(15,25); 
-
-    // creates a mousedown effect that changes the color of a square to black when the mouse presses over it, leaving a (pixel) trail through the grid
-    $(".grid").mousedown(function() {   
-        $(this).css("background-color", "black");
-        createWalls=true;  //It will create the walls.
-
-        $(".grid").mouseenter(function() {   
-            if(createWalls==false)
-            return;
-            
-            $(this).css("background-color", "black");
-            createWalls=true;
-            
-            
-        });
-    });
-    
-    
-    $(".grid").mouseup(function(){
-        createWalls = false;  //stop creating the wall
-    });
-
-    // allows the click of a button to prompt the user to create a new grid
-    $("#clearBtn").click(function() {
-        location.reload(true);
-
-        /*refreshGrid();*/
-    });
-
-    
-});
-
-
-
+    //Apply event listener to all grid elements after they have been created
+    for (let i = 0; i < j; i++) {
+        grid[i].addEventListener('mousedown', makewall)
+        }
+  
+  //makes the walls on clicking the cell
+  function makewall(e) {
+      e.toElement.style.backgroundColor = "black";
+    }
+  
+  //Button instructions
+    let clrButton = document.getElementById('clearBtn');
+    clrButton.addEventListener('click', newGrid); //when clear the board is clicked
+  
+  //this is the start and end nodes
+  str=grid[18];
+  dest=grid[66];
+  //setting their color  
+  str.style.backgroundColor = "green";
+  dest.style.backgroundColor = "red";
 
   
+}
 
-
+gridOperations(); //common grid operations
   
+//to get a new grid
+function newGrid() {
+  location.reload(true); //to reload the page
+ 
+}
