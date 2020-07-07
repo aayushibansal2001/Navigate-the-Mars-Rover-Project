@@ -16,7 +16,7 @@ function bfs(diagonal){
 	
 	cellsToAnimate.push([startCell, "searching"]);
 
-    while(!queue.empty()){
+    while(!queue.isEmpty()){
 		
 		//dequeue/remove a node from queue
 		let removedNode = queue.dequeue();
