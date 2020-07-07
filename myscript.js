@@ -73,6 +73,18 @@ function updateStartBtnText(){
 }
 
 
+//funtion to obtain index value in 1D array from row and column
+//or mapping 2D array to 1D array
+function mapping1D(row, column, totalColumn){
+  return (row * totalColumn) + column;
+}
+
+//function to obtain row and coulmn value from 1D array index value
+//or mapping 1D array to 2D
+function mapping2D(index, totalColumn){
+  var position = [index / totalColumn, index % totalColumn];
+  return position
+}
 
 
 
