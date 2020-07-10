@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title> TheFireStar </title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="style1.css" rel="stylesheet">
+
+<style>
+
+body {
+  background-image: url("https://wallpaperplay.com/walls/full/e/d/e/104382.jpg");
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 22px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ul li{
+  list-style:none;
+}
+
+.menu{
+margin:30px 0px;
+}
+
+.menu li{
+  margin :30px;
+}
+
+.column1{
+  background-color: transparent;
+  
+
+}
+
+.column2{
+     background-image: url("https://earthsky.org/upl/2020/01/mars-rover-cartoon.jpg");
+      background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main{
+   margin-left: 80px;
+}
+
+img{
+  margin-right: 30px;
+  }
+
+.logo{
+display: flex; 
+}
+
+div {
+  padding: 20px;
+}
+
+
+.menu li a {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.menu li a {
+  
+  color: white;
+  text-align: center;
+  padding: 13px 13px;
+  text-decoration: none;
+  font-size: 19px;
+}
+
+.menu li a:hover {
+  background-color: white;
+  color: black;
+}
+
+.menu li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+
+/* Responsive navigation menu (for mobile devices) */
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav-right {
+    float: none;
+    display: block;
+  }
+  
+  .topnav-centered a {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+  }
+}
+
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+
+<div class="main">
+<div class="logo">
+  <img src="https://www.cics.umass.edu/sites/default/files/microsoft_square_logo.jpeg" alt="" width="90"/>
+  <p class="navbar-brand" style="color:white" id="logo" style="font-size:90px" > The Mars Colonization Program: Team FireStar </p> 
+</div>
+</div>
+
+
+
+<!--
+<div class="row">
+<div class="col-md-4 column1" >
+<div class="menu">
+<ul>
+
+<li><a href="#news">Our Research</a> </li>
+<li><a href="#contact">Meet the Team</a> </li>
+<li><a href="#search">Current Features</a> </li>
+<li><a href="#about">Future Prospects</a> </li>
+<li><a href="#about">Navigate To the Rover!</a> </li>
+
+</ul>
+</div>
+</div>
+
+
+<div class="col-md-7 column2"> </div>
+
+</div>
+
+
+-->
+
+
+
+    <div class="wrapper">
+        <div class="button" onclick="document.body.classList.add('active')">
+            <span class="button-text">All about the Project!</span>
+            <div class="button-backgrounds">
+                <div class="button-circle button-circle1"></div>
+                <div class="button-circle button-circle2"></div>
+                <div class="button-circle button-circle3"></div>
+                <div class="button-circle button-circle4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="popup">
+            <div class="popup-inside">
+                <div class="backgrounds">
+                    <div class="background"></div>
+                    <div class="background background2"></div>
+                    <div class="background background3"></div>
+                    <div class="background background4"></div>
+                    <div class="background background5"></div>
+                    <div class="background background6"></div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="content-wrapper">
+                    <h1>This is our resesarch</h1>
+                    <p>Do you like it?</p>
+                    <p class="try-again" onclick="document.body.classList.remove('active')">Done</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
