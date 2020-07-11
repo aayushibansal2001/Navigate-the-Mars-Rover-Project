@@ -1,0 +1,148 @@
+body {
+    padding-top: 80px;
+    height: 100%;
+}
+
+body {
+    /*background-image: url('https://image.freepik.com/free-vector/mars-landscape-alien-planet-martian-background_107791-1781.jpg'); */
+    background-image: url('images/bg4.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.microsoft-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+
+#myNavbar {
+    margin-top: -60px;
+}
+
+a {
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+.btn {
+    font-family: 'Cinzel Decorative', cursive;
+}
+
+td {
+    border: 3px solid #eebe64;
+    width: 30px;
+    height: 30px;
+}
+
+.key {
+    border: 1px solid #79d9ce;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.btn-space {
+    margin-right: 5px;
+}
+
+#update {
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.wall {
+    transition: background-color 0.1s ease-in-out;
+    background-color: #262b28;
+    border-color: #262b28;
+}
+
+.none {
+    transition: background-color 0.1s ease-in-out;
+    background-color: white;
+    border-color: #79d9ce;
+}
+
+.searching {
+    transition: background-color 0.08s ease-in-out;
+    background-color: #f0186b;
+    border-color: #f0186b;
+}
+
+.visited {
+    transition: background-color 0.08s ease-in-out;
+    background-color: #1c28d4;
+    border-color: #1c28d4;
+}
+
+.success {
+    transition: background-color 0.08s ease-in-out;
+    background-color: #eebe64;
+    border-color: #eebe64;
+}
+
+.start {
+    background-color: green;
+    border-color: green;
+    /*background-image: url('images/rover2.jpg'); 
+	background-size: cover;*/
+}
+
+.end {
+    background-color: red;
+    border-color: red;
+    /*background-image: url('images/water.jpg');
+	background-size: cover; */
+}
+
+.end1 {
+    background-color: red;
+    border-color: red;
+    /*background-image: url('images/water.jpg');
+	background-size: cover; */
+}
+
+#holder {
+    width: 85%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+#results {
+    height: 87px;
+    width: 120px;
+    background-color: #ffc107;
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    border: 1px dashed black;
+}
+
+#resultsIcon {
+    margin-bottom: 3px;
+    margin-top: 7px;
+    font-size: 16px;
+}
+
+#duration,
+#length {
+    padding: 3px;
+}
+
+@media only screen and (max-width: 650px) {
+    #myNavbar a {
+        font-size: 1rem;
+    }
+    #holder {
+        width: 80%;
+        margin: auto;
+    }
+}
