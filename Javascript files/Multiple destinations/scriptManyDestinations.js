@@ -1,9 +1,11 @@
 var maxRows = 15; //It denotes the total number of rows
 var maxCols = 35; //It denotes the total number of columns
 var source = [7, 10]; //It points to the source cell
-var destination = [5, 20]; //It points to the destination cell
+var destination = [4, 30]; //It points to the destination cell
+var destination1 = [3, 60]; //It points to the destination1 cell
 var movingSrc = false; //whether the source is moving or not
 var movingDest = false; ////whether the destination is moving or not
+var movingDest1 = false; ////whether the destination1 is moving or not
 var algo = null;
 var ongoing = false; //It check if the algo is in process ot not
 var makeWalls = false;
@@ -42,10 +44,15 @@ function moveStartOrEnd(prevIndex, newIndex, startOrEnd) {
     if (startOrEnd == "start") {
         source = [updatedX, updatedY];
         console.log("Updated source is at [" + updatedX + ", " + updatedY + "]")
-    } else {
+    } else if (startOrEnd == "end") {
         destination = [updatedX, updatedY];
         console.log("Updated destination is at [" + updatedX + ", " + updatedY + "]")
+    } else if (startOrEnd == "end1") {
+        destination1 = [updatedX, updatedY];
+        console.log("Updated destination1 is at [" + updatedX + ", " + updatedY + "]")
     }
+
+
     clearBoard(keepWalls = true); //if we move the nodes after running the algos then it clears the board and move the nodes
     return;
 }
@@ -190,13 +197,16 @@ async function animateCells() {
     var cells = $("#tableHolder").find("td");
     var startCellIndex = (source[0] * (maxCols)) + source[1];
     var endCellIndex = (destination[0] * (maxCols)) + destination[1];
+    var endCell1Index = (destination1[0] * (maxCols)) + destination1[1];
+
     var delay = getDelay();
     for (var i = 0; i < cellsToAnimate.length; i++) {
         var cellCoordinates = cellsToAnimate[i][0];
         var x = cellCoordinates[0];
         var y = cellCoordinates[1];
         var num = (x * (maxCols)) + y;
-        if (num == startCellIndex || num == endCellIndex) { continue; }
+
+        if (num == startCellIndex || num == endCellIndex || num == endCell1Index) { continue; }
         var cell = cells[num];
         var colorClass = cellsToAnimate[i][1];
 
@@ -219,10 +229,16 @@ function getDelay() {
     return delay;
 }
 
+function page_load()
+{
+    alert("Try moving both the destination nodes!");
+}
+
 function clearBoard(keepWalls) {
     var cells = $("#tableHolder").find("td");
     var startCellIndex = (source[0] * (maxCols)) + source[1];
     var endCellIndex = (destination[0] * (maxCols)) + destination[1];
+    var endCell1Index = (destination1[0] * (maxCols)) + destination1[1];
     for (var i = 0; i < cells.length; i++) {
         isWall = $(cells[i]).hasClass("wall");
         $(cells[i]).removeClass();
@@ -230,6 +246,8 @@ function clearBoard(keepWalls) {
             $(cells[i]).addClass("start");
         } else if (i == endCellIndex) {
             $(cells[i]).addClass("end");
+        } else if (i == endCell1Index) {
+            $(cells[i]).addClass("end1");
         } else if (keepWalls && isWall) {
             $(cells[i]).addClass("wall");
         }
@@ -240,33 +258,24 @@ function clearBoard(keepWalls) {
 clearBoard();
 
 
-document.getElementById("many").addEventListener("click", myFunction);
+document.getElementById("single").addEventListener("click", singleDestination);
+document.getElementById("checkpoint").addEventListener("click", checkpoint);
 
-function myFunction() {
+function singleDestination() {
     // alert("Hello World!");
-    window.location.replace("manyDestinations.html");
+    window.location.replace("singleDestination.html");
+}
+function checkpoint() {
+    // alert("Hello World!");
+    window.location.replace("Checkpoint.html");
 }
 
 
-
-
-
-$('#myModal').on('shown.bs.modal', function() {
-    $('#myInput').trigger('focus');
-})
-
-$(window).on('load', function() {
-    $('#exampleModalLong').modal('show');
-});
-
 //Javascript file to include mouse functions
-document.write('<script type="text/javascript" src="Javascript files/mouse_functions.js" ></script>');
-
-// //Javascript file to include Breadth First Search algo
-// document.write('<script type="text/javascript" src="Javascript files/bfs_algo.js" ></script>');
+document.write('<script type="text/javascript" src="Javascript files/Multiple destinations/mouse_functionsD.js" ></script>');
 
 //Javascript file to include Dijkstra algo
-document.write('<script type="text/javascript" src="Javascript files/dijkstra_algo.js" ></script>');
+document.write('<script type="text/javascript" src="Javascript files/Multiple destinations/dijkstra_algoD.js" ></script>');
 
 //Javascript file to include Dijkstra algo
-document.write('<script type="text/javascript" src="Javascript files/bfs_new.js" ></script>');
+document.write('<script type="text/javascript" src="Javascript files/Multiple destinations/bfs_newD.js" ></script>');

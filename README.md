@@ -1,2 +1,2 @@
 # The Mars Rover Project
-updated new grid
+All the integration done, homepage made, checkpoints feature added and changed the UI.

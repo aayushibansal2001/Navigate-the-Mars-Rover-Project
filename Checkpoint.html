@@ -6,16 +6,16 @@
 <!-- imported css files --> 
 
 	<title>Mars Rover Navigation</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style2.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Cinzel+Decorative:wght@700&family=Modak&display=swap" rel="stylesheet">
 
 </head>
-<body>
+<body onload="page_load()">
 
 	<nav class="navbar navbar-expand-sm navbar-dark bg-transparent top-nav" id="myNavbar">
 	<img src="images/microsoft logo.png" class="microsoft-logo">
-	<a class="navbar-brand" href="#" id="logo"> The Mars Colonization Program: Team FireStar </a>
+	<a class="navbar-brand" href="index.html" id="logo"> The Mars Colonization Program: Team FireStar </a>
 	</nav>
 
 	<nav class="navbar navbar-expand-sm navbar-dark bg-transparent">
@@ -26,19 +26,26 @@
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
 	      	<li class="nav-item dropdown" id="algorithms">
-        	<a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          	Algorithms
-        	</a>
+                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Algorithms
+                </a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Dijkstra</a>
-					    <a class="dropdown-item" href="#">Breadth-First Search (BFS)</a>
-					</div>
-		      	</li>
+					<a class="dropdown-item" href="#">Breadth-First Search (BFS)</a>
+				</div>
+            </li>
+            <li class="nav-item dropdown mx-5" id="new-features">
+				<a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Features
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#" id="single">Rover with Single Destination</a>
+						<a class="dropdown-item" href="#" id="many">Rover with multiple destinations</a>
+				</div>
+			</li>
 		 
-	    	</ul>
-	      	<button class="btn btn-outline-light btn-space" type="submit" id="start">Start Rover</button>
-	        <button type="button" class="btn btn-outline-light btn-space" type="submit" id="many">Switch To Rover with Multiple Destinations</button>
-		  	<button type="button" class="btn btn-outline-light btn-space" type="submit" id="clear">Clear Grid</button>
+	    </ul>
+	    <button class="btn btn-outline-light btn-space" type="submit" id="start">Start Rover</button>  
+		<button type="button" class="btn btn-outline-light btn-space" type="submit" id="clear">Clear Grid</button>
 	      	
   	</div>
 		</nav>
@@ -59,7 +66,7 @@
 
 
 <!-- javascript files we have to write-->
-	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript" src="JavaScript files/Passing through a checkpoint/scriptCheckpoints.js"></script>
 
 
 </body>
