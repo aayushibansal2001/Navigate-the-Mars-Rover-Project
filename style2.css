@@ -59,8 +59,8 @@ ul {
 
 .wall {
 	transition : background-color 0.1s ease-in-out;
-	background-color: #000000 ;
-	border-color: #000000  ;
+	background-color: #cf1020 ;
+	border-color: #cf1020  ;
 }
 
 .hill{
@@ -77,8 +77,8 @@ ul {
 
 .crater{
 	transition : background-color 0.1s ease-in-out;
-	background-color: #cf1020	;
-	border-color: #cf1020	;
+	background-color: #000000	;
+	border-color: #000000	;
 }
 
 .storm{
