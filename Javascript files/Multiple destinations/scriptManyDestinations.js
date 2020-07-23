@@ -65,7 +65,7 @@ function moveStartOrEnd(prevIndex, newIndex, startOrEnd) {
 function updateStart() {
     if (algo == "Dijkstra") {
         $("#start").html("Run rover on Dijkstra");
-    } else if (algo == "Breadth-First Search (BFS)") {
+    } else if (algo == "Breadth-First Search (BFS) with diagnols" || algo == "Breadth-First Search (BFS) without diagnols") {
         $("#start").html("Run rover on BFS");
     }
     return;
@@ -91,7 +91,9 @@ async function beginAlgo(algo) {
 function executeAlgo() {
     if (algo == "Dijkstra") {
         var pathFound = dijkstra();
-    } else if (algo == "Breadth-First Search (BFS)") {
+    } else if (algo == "Breadth-First Search (BFS) with diagnols") {
+        var pathFound = bfs(true);
+    }else if(algo == "Breadth-First Search (BFS) without diagnols"){
         var pathFound = bfs(false);
     }
     return pathFound;
