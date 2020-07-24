@@ -270,7 +270,7 @@ clearBoard();
 document.getElementById("many").addEventListener("click", manyDestinations);
 document.getElementById("checkpoint").addEventListener("click", checkpoint);
 
-/*
+
 function manyDestinations() {
     // alert("Hello World!");
     window.location.replace("manyDestinations.html");
@@ -279,7 +279,7 @@ function checkpoint() {
     // alert("Hello World!");
     window.location.replace("Checkpoint.html");
 }
-*/
+
 
 //Javascript file to include mouse functions
 document.write('<script type="text/javascript" src="Javascript files/Single destination/mouse_functions.js" ></script>');

@@ -278,7 +278,7 @@ clearBoard();
 document.getElementById("single").addEventListener("click", singleD);
 document.getElementById("many").addEventListener("click", manyD);
 
-/*
+
 function singleD() {
     // alert("Hello World!");
     window.location.replace("singleDestination.html");
@@ -288,7 +288,7 @@ function manyD() {
     // alert("Hello World!");
     window.location.replace("manyDestinations.html");
 }
-*/
+
 
 
 //Javascript file to include mouse functions

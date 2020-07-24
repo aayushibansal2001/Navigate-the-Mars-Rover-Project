@@ -263,14 +263,14 @@ clearBoard();
 document.getElementById("single").addEventListener("click", singleDestination);
 document.getElementById("checkpoint").addEventListener("click", checkpoint);
 
-/*function singleDestination() {
+function singleDestination() {
     // alert("Hello World!");
     window.location.replace("singleDestination.html");
 }
 function checkpoint() {
     // alert("Hello World!");
     window.location.replace("Checkpoint.html");
-}*/
+}
 
 
 //Javascript file to include mouse functions
