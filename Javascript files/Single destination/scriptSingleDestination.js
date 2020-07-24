@@ -270,7 +270,6 @@ clearBoard();
 document.getElementById("many").addEventListener("click", manyDestinations);
 document.getElementById("checkpoint").addEventListener("click", checkpoint);
 
-
 function manyDestinations() {
     // alert("Hello World!");
     window.location.replace("manyDestinations.html");

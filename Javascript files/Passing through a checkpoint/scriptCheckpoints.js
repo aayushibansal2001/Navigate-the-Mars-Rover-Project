@@ -80,7 +80,7 @@ function updateStart() {
 
 async function beginAlgo(algo) {
     ongoing = true; //Algorithm is in progress
-    var pathFound = executeAlgo(); //calls the function to execute algorithm
+    executeAlgo(); //calls the function to execute algorithm
     await animateCells(); //The await operator is used to wait for a Promise. It is used inside an async function.
     ongoing = false; //Algorith is finished
     justFinished = true;
@@ -98,7 +98,7 @@ function executeAlgo() {
     }else if (algo == "Breadth-First Search (BFS) without diagnols") {
         var pathFound1 = bfsFromStoC(false);
         var pathFound2 = bfsFromCtoD(false);
-        var pathFound=pathFound1&&pathFound2;
+        var pathFound=pathFound1+pathFound2;
     }
     return pathFound;
 }
@@ -251,6 +251,11 @@ function getDelay() {
     return delay;
 }
 
+function page_load()
+{
+    alert("Try moving the checkpoint and the destination node!");
+}
+
 function clearBoard(keepWalls) {
     var cells = $("#tableHolder").find("td");
     var startCellIndex = (source[0] * (maxCols)) + source[1];
@@ -277,7 +282,6 @@ clearBoard();
 
 document.getElementById("single").addEventListener("click", singleD);
 document.getElementById("many").addEventListener("click", manyD);
-
 
 function singleD() {
     // alert("Hello World!");
