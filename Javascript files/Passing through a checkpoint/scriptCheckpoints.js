@@ -251,11 +251,6 @@ function getDelay() {
     return delay;
 }
 
-function page_load()
-{
-    alert("Try moving the checkpoint and the destination node!");
-}
-
 function clearBoard(keepWalls) {
     var cells = $("#tableHolder").find("td");
     var startCellIndex = (source[0] * (maxCols)) + source[1];
