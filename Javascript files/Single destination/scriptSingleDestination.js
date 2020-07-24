@@ -231,7 +231,7 @@ function getDelay(speed){
 
 function page_load()
 {
-    alert("Hello! Different types of obstacles are made by varying the edge weight. Hence choose the different types of obstacles only in Dijkstra and not in BFS algorithm.");
+    console.log("Hello! Different types of obstacles are made by varying the edge weight. Hence choose the different types of obstacles only in Dijkstra and not in BFS algorithm.")
 }
 
 function clearBoard( keepWalls ){
