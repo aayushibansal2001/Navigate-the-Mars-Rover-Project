@@ -253,7 +253,7 @@ function getDelay() {
 
 function page_load()
 {
-    alert("Try moving the checkpoint and the destination node!");
+    alert("Hello! Please move the destination node, checkpoint and the source node about the grid, before you start the algorithm visualizer!");
 }
 
 function clearBoard(keepWalls) {
