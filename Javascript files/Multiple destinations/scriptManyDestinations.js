@@ -233,7 +233,7 @@ function getDelay() {
 
 function page_load()
 {
-    alert("Hello! Please move the destination nodes and the source node about the grid, before you start the algorithm visualizer!");
+    console.log("Move the destination nodes and the source node about the grid, before you start the algorithm visualizer!")
 }
 
 function clearBoard(keepWalls) {
