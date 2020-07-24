@@ -33,7 +33,7 @@ function createGrid(maxRows, maxCols) {
 }
 
 var matrix = createGrid(maxRows, maxCols); //calls the function to create the grid
-$("#tableHolder").append(matrix); //It appends the grid generated in javaScript into Html tableHolder id
+$("#tableHolder").append(matrix); //It appends the grid generated in javascript into Html tableHolder id
 
 
 //************************************ 
@@ -296,8 +296,8 @@ function manyD() {
 
 
 //Javascript file to include mouse functions
-document.write('<script type="text/javascript" src="JavaScript files/Passing through a checkpoint/mouse_functionsC.js" ></script>');
+document.write('<script type="text/javascript" src="Javascript files/Passing through a checkpoint/mouse_functionsC.js" ></script>');
 
 
 //Javascript file to include Bfs algo
-document.write('<script type="text/javascript" src="JavaScript files/Passing through a checkpoint/bfs_on_checkpoint.js" ></script>');
+document.write('<script type="text/javascript" src="Javascript files/Passing through a checkpoint/bfs_on_checkpoint.js" ></script>');
