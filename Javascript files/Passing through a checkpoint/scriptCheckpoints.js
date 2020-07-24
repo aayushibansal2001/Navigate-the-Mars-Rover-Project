@@ -80,7 +80,7 @@ function updateStart() {
 
 async function beginAlgo(algo) {
     ongoing = true; //Algorithm is in progress
-    executeAlgo(); //calls the function to execute algorithm
+    var pathFound = executeAlgo(); //calls the function to execute algorithm
     await animateCells(); //The await operator is used to wait for a Promise. It is used inside an async function.
     ongoing = false; //Algorith is finished
     justFinished = true;
@@ -98,7 +98,7 @@ function executeAlgo() {
     }else if (algo == "Breadth-First Search (BFS) without diagnols") {
         var pathFound1 = bfsFromStoC(false);
         var pathFound2 = bfsFromCtoD(false);
-        var pathFound=pathFound1+pathFound2;
+        var pathFound=pathFound1&&pathFound2;
     }
     return pathFound;
 }
