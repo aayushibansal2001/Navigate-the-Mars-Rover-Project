@@ -4,6 +4,9 @@ The aim of this project is to help the Mars Curiosity Rover find the shortest pa
 # Complete Documentation
 https://drive.google.com/file/d/1fILqTxyzYg-osNQ27anB1GFjAup0m2f1/view
 
+# The Project
+https://aayushibansal2001.github.io/Navigate-the-Mars-Rover-Project/
+
 # Authors (In alphabetical order)
 Aayushi Bansal, Srinidhi Ayyagari and Tanisha Sharda
 
