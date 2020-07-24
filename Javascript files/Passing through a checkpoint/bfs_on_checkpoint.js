@@ -121,28 +121,29 @@ function bfsFromCtoD(diagonal) {
         }
 
         //animating the start cell as visited
-        cellsToAnimate.push([removedNode, "visited"]);
+            cellsToAnimate.push([removedNode, "visited"]);
 
         //iterate through the direction array to obtain the neighbouring cells along the given dirction vectors
         for (let i = 0; i < dir.length; i++) {
+            let x = removedNode[0] + dir[i][0];
+            let y = removedNode[1] + dir[i][1];
 
             //condition to check that neighbouring lie within the range of the grid and are unvisited
             //row value should be greater than 0 and less than or equal to max row value
             //column value should be greater than 0 and less than or equal to max column value
             //ans that cell should be unvisited previously
-            if (removedNode[0] + dir[i][0] >= 0 && removedNode[0] + dir[i][0] < maxRows &&
-                removedNode[1] + dir[i][1] >= 0 && removedNode[1] + dir[i][1] < maxCols &&
-                vis[mapping1D(removedNode[0] + dir[i][0], removedNode[1] + dir[i][1], maxCols)] != true) {
+            if (x >= 0 && x< maxRows && y >= 0 && y < maxCols &&
+                vis[mapping1D(x, y, maxCols)] != true) {
 
                 //add the neiboring cell to the queue and mark it visited
                 //animate the cell
                 //store that value of removeNode as its previous cell value
-                queue.enqueue([removedNode[0] + dir[i][0], removedNode[1] + dir[i][1]]);
-                vis[mapping1D(removedNode[0] + dir[i][0], removedNode[1] + dir[i][1], maxCols)] = true;
-                cellsToAnimate.push([
-                    [removedNode[0] + dir[i][0], removedNode[1] + dir[i][1]], "searching"
-                ]);
-                prevArr[removedNode[0] + dir[i][0]][removedNode[1] + dir[i][1]] = removedNode;
+                queue.enqueue([x, y]);
+                vis[mapping1D(x, y, maxCols)] = true;
+
+                if(! $($("#tableHolder").find("td")[mapping1D(x, y, maxCols)]).hasClass("success"))
+                cellsToAnimate.push([[x, y], "searching"]);
+                prevArr[x][y] = removedNode;
             }
         }
     }
@@ -274,12 +275,12 @@ class Queue {
 function addWalls(vis, diagonal) {
     for (let i = 0; i < vis.length; i++) {
         {
-            console.log(" haha, lol");
+            // console.log(" haha, lol");
             // to check that the paricular cell is not a wall
             if ($($("#tableHolder").find("td")[i]).hasClass("wall")) {
                 { //if its cell marking it as true
                     vis[i] = true;
-                    console.log("reached wall adding pt");
+                    // console.log("reached wall adding pt");
                 }
             }
             
