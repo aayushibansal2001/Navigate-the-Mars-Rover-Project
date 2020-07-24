@@ -2,16 +2,18 @@ var maxRows = 15; //It denotes the total number of rows
 var maxCols = 35; //It denotes the total number of columns
 var source = [7, 10]; //It points to the source cell
 var destination = [4, 30]; //It points to the destination cell
-var destination1 = [3, 60]; //It points to the destination1 cell
+var checkpoint1 = [3, 60]; //It points to the checkpoint1 cell
 var movingSrc = false; //whether the source is moving or not
 var movingDest = false; ////whether the destination is moving or not
-var movingDest1 = false; ////whether the destination1 is moving or not
+var movingCheck1 = false; ////whether the checkpoint1 is moving or not
 var algo = null;
 var ongoing = false; //It check if the algo is in process ot not
 var makeWalls = false;
 var cellsToAnimate = [];
 var justFinished = false;
 var animationState = null;
+var cellsNotToAnimate = [];
+var animateFirstOrSecond = false;
 
 //************************************ 
 //Function to generate a grid
@@ -47,9 +49,9 @@ function moveStartOrEnd(prevIndex, newIndex, startOrEnd) {
     } else if (startOrEnd == "end") {
         destination = [updatedX, updatedY];
         console.log("Updated destination is at [" + updatedX + ", " + updatedY + "]")
-    } else if (startOrEnd == "end1") {
-        destination1 = [updatedX, updatedY];
-        console.log("Updated destination1 is at [" + updatedX + ", " + updatedY + "]")
+    } else if (startOrEnd == "check1") {
+        checkpoint1 = [updatedX, updatedY];
+        console.log("Updated checkpoint1 is at [" + updatedX + ", " + updatedY + "]")
     }
 
 
@@ -78,7 +80,7 @@ function updateStart() {
 
 async function beginAlgo(algo) {
     ongoing = true; //Algorithm is in progress
-    var pathFound = executeAlgo(); //calls the function to execute algorithm
+    executeAlgo(); //calls the function to execute algorithm
     await animateCells(); //The await operator is used to wait for a Promise. It is used inside an async function.
     ongoing = false; //Algorith is finished
     justFinished = true;
@@ -89,12 +91,14 @@ async function beginAlgo(algo) {
 //************************************ 
 
 function executeAlgo() {
-    if (algo == "Dijkstra") {
-        var pathFound = dijkstra();
-    } else if (algo == "Breadth-First Search (BFS) with diagnols") {
-        var pathFound = bfs(true);
-    }else if(algo == "Breadth-First Search (BFS) without diagnols"){
-        var pathFound = bfs(false);
+    if (algo == "Breadth-First Search (BFS) with diagnols") {
+        var pathFound1 = bfsFromStoC(true);
+        var pathFound2 = bfsFromCtoD(true);
+        var pathFound=pathFound1+pathFound2;
+    }else if (algo == "Breadth-First Search (BFS) without diagnols") {
+        var pathFound1 = bfsFromStoC(false);
+        var pathFound2 = bfsFromCtoD(false);
+        var pathFound=pathFound1+pathFound2;
     }
     return pathFound;
 }
@@ -199,7 +203,7 @@ async function animateCells() {
     var cells = $("#tableHolder").find("td");
     var startCellIndex = (source[0] * (maxCols)) + source[1];
     var endCellIndex = (destination[0] * (maxCols)) + destination[1];
-    var endCell1Index = (destination1[0] * (maxCols)) + destination1[1];
+    var checkpoint1Index = (checkpoint1[0] * (maxCols)) + checkpoint1[1];
 
     var delay = getDelay();
     for (var i = 0; i < cellsToAnimate.length; i++) {
@@ -208,10 +212,26 @@ async function animateCells() {
         var y = cellCoordinates[1];
         var num = (x * (maxCols)) + y;
 
-        if (num == startCellIndex || num == endCellIndex || num == endCell1Index) { continue; }
+        if (num == startCellIndex || num == endCellIndex || num == checkpoint1Index ) { continue; }
         var cell = cells[num];
         var colorClass = cellsToAnimate[i][1];
+        
+        /*cellsNotToAnimate[i][1]=cellsToAnimate[i][1]; //giving the cells which are already animated to the cellsNotToAnimate array so that those cells do not get animated again
+        var x=checkpoint1Index;
+        if(bfsCtoD){
+        while(! cellsNotToAnimate[i][1] && (x<=endCellIndex)){       //this loops runs till we do not encounter the already animated cells
+            var cellCoordinates = cellsToAnimate[i][0];
+            var x = cellCoordinates[0];
+            var y = cellCoordinates[1];
+            var num = (x * (maxCols)) + y;
 
+            if (num == startCellIndex || num == endCellIndex || num == checkpoint1Index ) { continue; }
+            var cell = cells[num];
+            var colorClass = cellsToAnimate[i][1];
+
+            x++;
+        }
+    }*/
         // Wait until its time to animate
         await new Promise(resolve => setTimeout(resolve, delay));
 
@@ -233,14 +253,14 @@ function getDelay() {
 
 function page_load()
 {
-    alert("Try moving both the destination nodes!");
+    alert("Try moving the checkpoint and the destination node!");
 }
 
 function clearBoard(keepWalls) {
     var cells = $("#tableHolder").find("td");
     var startCellIndex = (source[0] * (maxCols)) + source[1];
     var endCellIndex = (destination[0] * (maxCols)) + destination[1];
-    var endCell1Index = (destination1[0] * (maxCols)) + destination1[1];
+    var checkpoint1Index = (checkpoint1[0] * (maxCols)) + checkpoint1[1];
     for (var i = 0; i < cells.length; i++) {
         isWall = $(cells[i]).hasClass("wall");
         $(cells[i]).removeClass();
@@ -248,8 +268,8 @@ function clearBoard(keepWalls) {
             $(cells[i]).addClass("start");
         } else if (i == endCellIndex) {
             $(cells[i]).addClass("end");
-        } else if (i == endCell1Index) {
-            $(cells[i]).addClass("end1");
+        } else if (i == checkpoint1Index) {
+            $(cells[i]).addClass("check1");
         } else if (keepWalls && isWall) {
             $(cells[i]).addClass("wall");
         }
@@ -260,24 +280,24 @@ function clearBoard(keepWalls) {
 clearBoard();
 
 
-document.getElementById("single").addEventListener("click", singleDestination);
-document.getElementById("checkpoint").addEventListener("click", checkpoint);
+document.getElementById("single").addEventListener("click", singleD);
+document.getElementById("many").addEventListener("click", manyD);
 
-function singleDestination() {
+function singleD() {
     // alert("Hello World!");
     window.location.replace("singleDestination.html");
 }
-function checkpoint() {
+
+function manyD() {
     // alert("Hello World!");
-    window.location.replace("Checkpoint.html");
+    window.location.replace("manyDestinations.html");
 }
 
 
+
 //Javascript file to include mouse functions
-document.write('<script type="text/javascript" src="Javascript files/Multiple destinations/mouse_functionsD.js" ></script>');
+document.write('<script type="text/javascript" src="Javascript files/Passing through a checkpoint/mouse_functionsC.js" ></script>');
 
-//Javascript file to include Dijkstra algo
-document.write('<script type="text/javascript" src="Javascript files/Multiple destinations/dijkstra_algoD.js" ></script>');
 
-//Javascript file to include Dijkstra algo
-document.write('<script type="text/javascript" src="Javascript files/Multiple destinations/bfs_newD.js" ></script>');
+//Javascript file to include Bfs algo
+document.write('<script type="text/javascript" src="Javascript files/Passing through a checkpoint/bfs_on_checkpoint.js" ></script>');
